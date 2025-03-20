@@ -1,0 +1,37 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+
+# Virtual environment
+venv/
+env/
+
+# Django secret keys (if stored in a .env file)
+.env
+
+# Database files
+db.sqlite3
+*.db
+
+# Django migrations (optional)
+**/migrations/*  
+!**/migrations/__init__.py  # Keep __init__.py to make the directory a package
+
+# Media and static files (if generated dynamically)
+media/
+staticfiles/
+
+# VS Code and JetBrains IDE files
+.vscode/
+.idea/
+
+# MacOS and system files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies (if frontend is included)
+node_modules/
