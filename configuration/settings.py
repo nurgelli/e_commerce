@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ecom',
     'rest_framework',
-    'drf-yasg'
+    'drf_yasg'
     
 ]
 
