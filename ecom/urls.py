@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import CategoryListAPI, SubCategoryListAPI, ProductListAPI, ProductDetailAPI
-
+from .views import CategoryListAPI, SubCategoryListAPI
+from product.views import  ProductListAPI, ProductDetailAPI
 
 urlpatterns = [
     path('api/categories/', CategoryListAPI.as_view(), name='api-category-lst'),
