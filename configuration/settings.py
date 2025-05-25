@@ -35,15 +35,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ecom',
     'product',
     'user', 
-    'ecom',
     'rest_framework',
     'drf_yasg'
     
@@ -59,6 +60,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+
+UNFOLD = {
+    "SITE_TITLE": "E-commerce Admin",
+    "SITE_HEADER": "Ecom Control Panel",
+    "SITE_URL": "/admins",  # clicking site name goes here
+    "SHOW_COUNTS": True,
+}
 
 ROOT_URLCONF = 'configuration.urls'
 
