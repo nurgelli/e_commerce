@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from ecom.serializers import ProductSerializer
+from ecom.serializers import ProductSerializer, StorageSerializer
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from .models import Product
+from .models import Product, Storage
 
 
 class ProductListAPI(ListAPIView):
@@ -15,3 +15,7 @@ class ProductDetailAPI(RetrieveAPIView):
     serializer_class = ProductSerializer
     lookup_field = 'slug'
 
+class StorageListAPI(ListAPIView):
+    queryset = Storage.object.all()
+    serializer_class = StorageSerializer
+    
