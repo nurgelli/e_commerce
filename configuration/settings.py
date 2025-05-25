@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,9 +26,13 @@ load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SEC_KEY')
 
+
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 ALLOWED_HOSTS = []
 
 
@@ -36,6 +40,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'unfold',
+    'unfold.contrib.filters',
+    'unfold.contrib.forms',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ecom',
     'product',
-    'user', 
     'rest_framework',
     'drf_yasg'
     
@@ -63,9 +69,14 @@ MIDDLEWARE = [
 
 UNFOLD = {
     "SITE_TITLE": "E-commerce Admin",
-    "SITE_HEADER": "Ecom Control Panel",
+    "SITE_HEADER": "Admin Panel",
+    "SHOW_COLORS": True,
+    "SITE_ICON": 'box',
     "SITE_URL": "/admins",  # clicking site name goes here
     "SHOW_COUNTS": True,
+    # "COLLAPSIBLE_FIELDS": True,
+    # "TABS": True,
+    # "SHOW_HISTORY": True,
 }
 
 ROOT_URLCONF = 'configuration.urls'
@@ -138,6 +149,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 
 # Default primary key field type
