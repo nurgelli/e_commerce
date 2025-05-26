@@ -16,6 +16,6 @@ class ProductDetailAPI(RetrieveAPIView):
     lookup_field = 'slug'
 
 class StorageListAPI(ListAPIView):
-    queryset = Storage.object.all()
+    queryset = Storage.objects.all()
     serializer_class = StorageSerializer
     
