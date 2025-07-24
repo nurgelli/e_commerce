@@ -38,5 +38,37 @@ class userProfile(models.Model):
     def __str__(self):
         return f"Profile of {self.user.username}"
     
+    
+class Address(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='addresses')
+    address_1 = models.CharField(max_length=255)
+    address_2 = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=100)
+    
+    address_type_choices = [
+        ('shipping', "Shipping"),
+        ('billing', "Billing"),
+        ('home', "Home"),
+        ('work', "Work"),
+    ]
+    address_type = models.CharField(max_length=10, choices=address_type_choices, default='shipping')
+    is_default_shipping = models.BooleanField(default=False)
+    is_default_billing = models.BooleanField(default=False)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'Address'
+        verbose_name_plural = 'Addresses'
 
+    def __str__(self):
+        return f"{self.address_1}, {self.city}, {self.user.username}"
+    
+    def save(self, *args, **kwargs):
+        if self.is_default_shipping:
+            Address.objects.filter(user=self.user, is_default_shipping=True).exclude(pk=self.pk).update(is_default_shipping=False)
+        if self.is_default_billing:
+            Address.objects.filter(user=self.user, is_default_billing=True).exclude(pk=self.pk).update(is_default_billing=False)
+        super().save(*args, **kwargs)
+            
